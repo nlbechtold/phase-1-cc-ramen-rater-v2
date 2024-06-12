@@ -5,9 +5,26 @@ fetch("http://localhost:3000/ramens")
   console.log(ramens)
   ramens.forEach((ramen) => {
     displayRamens(ramen)
-  })
+     
+      
+      })
+    }
+  )
 
-})
+  function displayRamens(ramen) {
+    const disRamen = document.querySelector("#ramen-menu")
+    const imageD = document.createElement('img')
+    imageD.src = ramen.image
+  
+    disRamen.append(imageD)
+  
+    imageD.addEventListener('click', () => {
+      handleClick(ramen)
+      
+  
+    })
+  }
+
 
 function handleClick(ramen) {
   const ramenName = document.querySelector(".name")
@@ -47,21 +64,29 @@ addSubmitListener.addEventListener("submit", (e)=> {
   displayRamens(newRamen)
 })
 
+const editI = document.querySelector("#edit-ramen")
+
+editI.addEventListener("input", (e) => {
+  const editedRamen = {
+    rating: e.target["new-rating"].value,
+    comment: e.target["new-comment"].value,
+
+  }
+  editI.textContent = e.target["rating"].value,
+  editI.textContent = e.target["new-comment"].value,
+  displayRamens(editedRamen)
+
+} )
+
+// const addEditForm = document.querySelector("#edit-ramen")
+// addEditForm.addEventListener("submit", (e) => {
+//   rating: e.target["new-rating"].value,
+//   comment: e.target["new-comment"].value,
+// }
+//
 
 
-function displayRamens(ramen) {
-  const disRamen = document.querySelector("#ramen-menu")
-  const image = document.createElement("img")
-  image.src = ramen.image
 
-  disRamen.append(image)
-
-  image.addEventListener('click', () => {
-    handleClick(ramen)
-    
-
-  })
-}
 
 // // REAPLACED with function --const displayRamens = () => {
 // //   // Add code
